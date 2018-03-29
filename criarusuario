@@ -1,14 +1,14 @@
 #!/bin/bash
 if [ $(id -u) -eq 0 ]
 then
-	echo -e "\033[1;32mNome do novo usuario:\033[0;37m"; read -p " " name
-	echo -e "\033[1;32mSenha para o usuario $name:\033[0;37m"; read -p " " pass
-	echo -e "\033[1;32mQuantos dias usuario $name deve durar:\033[0;37m"; read -p " " daysrnf
-	echo -e "\033[1;32mLimite de logins simultaneos:\033[0;37m"; read -p " " limiteuser
+	echo -e "\033[1;32mnomre del nuevo usuario:\033[0;37m"; read -p " " name
+	echo -e "\033[1;32mcontraseña para el usuario $name:\033[0;37m"; read -p " " pass
+	echo -e "\033[1;32musuario valido por cuantos dias $name deve durar:\033[0;37m"; read -p " " daysrnf
+	echo -e "\033[1;32mlimite de logeos para el mismo usuario:\033[0;37m"; read -p " " limiteuser
 	echo -e "\033[0m"
 	if cat /etc/passwd |grep $name: |grep -vi [a-z]$name |grep -v [0-9]$name > /dev/null
 	then
-		echo -e "\033[1;31mUsuario $name ja existe\033[0m"
+		echo -e "\033[1;31mUsuario $name ya existente\033[0m"
 	else
 		valid=$(date '+%C%y-%m-%d' -d " +$daysrnf days")
 		datexp=$(date "+%d/%m/%Y" -d "+ $daysrnf days")
